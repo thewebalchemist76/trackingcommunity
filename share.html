@@ -11,8 +11,11 @@
   </style>
 </head>
 <body>
-  <p id="msg">Apertura in corso…</p>
-  <p><a id="store" href="">Installa l'estensione</a></p>
+  <div id="content">
+    <p id="msg"></p>
+    <p><a id="openLink" href="" style="display:inline-block;margin:12px 0;padding:10px 20px;background:#f5c518;color:#111;font-weight:700;text-decoration:none;border-radius:8px;">Apri con Tracking Community</a></p>
+    <p><a id="store" href="">Installa l'estensione</a></p>
+  </div>
   <script>
     (function () {
       var STORE = "https://chromewebstore.google.com/detail/Series%20Tracker/egjldedkojndhijaojofldliphmemglg";
@@ -35,18 +38,16 @@
 
       var storeEl = document.getElementById("store");
       var msgEl = document.getElementById("msg");
+      var openLink = document.getElementById("openLink");
       storeEl.href = STORE;
 
       if (protocol) {
-        window.location = protocol;
-        setTimeout(function () {
-          msgEl.textContent = "Se l'estensione non si è aperta, installala dal link qui sotto.";
-        }, 1800);
-        setTimeout(function () {
-          window.location = STORE;
-        }, 2200);
+        msgEl.textContent = "Clicca il pulsante per aprire il titolo in Tracking Community:";
+        openLink.href = protocol;
+        openLink.style.display = "inline-block";
       } else {
         msgEl.textContent = "Link non valido.";
+        openLink.style.display = "none";
         setTimeout(function () { window.location = STORE; }, 2500);
       }
     })();
