@@ -28,12 +28,12 @@
       var protocolUrl = "";
 
       if (movie && /^\d+$/.test(movie)) {
-        protocolUrl = "web+trackingcommunity://movie/" + movie;
+        protocolUrl = "ext+trackingcommunity://movie/" + movie;
       } else if (tv && /^\d+$/.test(tv)) {
         if (s && e && /^\d+$/.test(s) && /^\d+$/.test(e)) {
-          protocolUrl = "web+trackingcommunity://tv/" + tv + "/s/" + s + "/e/" + e;
+          protocolUrl = "ext+trackingcommunity://tv/" + tv + "/s/" + s + "/e/" + e;
         } else {
-          protocolUrl = "web+trackingcommunity://tv/" + tv;
+          protocolUrl = "ext+trackingcommunity://tv/" + tv;
         }
       }
 
