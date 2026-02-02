@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tracking Community – Apri link</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; text-align: center; }
+    p { color: #374151; }
+    a { color: #2563eb; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <p id="msg">Apertura in corso…</p>
+    <p style="margin-top: 24px;"><a id="store" href="">Installa l'estensione</a></p>
+  </div>
+  <script>
+    (function () {
+      var STORE = "https://chromewebstore.google.com/detail/Series%20Tracker/egjldedkojndhijaojofldliphmemglg";
+      var params = new URLSearchParams(window.location.search);
+      var movie = params.get("movie");
+      var tv = params.get("tv");
+      var s = params.get("s");
+      var e = params.get("e");
+      var valid = false;
+      if (movie && /^\d+$/.test(movie)) valid = true;
+      else if (tv && /^\d+$/.test(tv)) valid = true;
+
+      document.getElementById("store").href = STORE;
+      if (!valid) {
+        document.getElementById("msg").textContent = "Link non valido.";
+        setTimeout(function () { window.location = STORE; }, 2500);
+      }
+    })();
+  </script>
+</body>
+</html>
